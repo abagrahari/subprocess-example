@@ -12,7 +12,7 @@ logging.basicConfig(
 async def long_running_func() -> None:
 
     logging.info(f"PID of long-running Process:{os.getpid()}")
-    await asyncio.sleep(10)  # Simulate long-running function
+    await asyncio.sleep(7)  # Simulate long-running function
     logging.info(
         f"Long-running process {os.getpid()} finished before being terminated. Was not terminated by parent!"
     )
