@@ -21,6 +21,17 @@ def queue():
     logging.info(f"PID of subprocess created using subprocess: {process.pid}")
 
 
+def handler(signum, frame):
+    import sys
+
+    logging.info("\nSignal received")
+    os.killpg(os.getpgid(process.pid), signal.SIGTERM)  # works
+    sys.exit(0)
+
+
+# Set signal handler so CTRL+C also ends the subprocess
+# signal.signal(signal.SIGINT, handler)
+
 queue()
 
 # Terminate subprocess after some time
